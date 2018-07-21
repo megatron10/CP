@@ -10,11 +10,9 @@ pair<int,int> dim[11];
 int n;
 void output(int l,int r)
 {
-	cout<<"(";
+	if(l==r){cout<<"A"<<l+1;return;}
 	int tmp=ans[l][r].first;
-	if(tmp==l)		 	{  cout<<"A"<<l+1<<" x "; output(l+1,r); cout<<")"; 		 }
-	else if(tmp==r-1)	{  output(l,r-1); cout<<" x A"<<r+1<<")";			 		 }
-	else			 	{  output(l,tmp); cout<<" x "; output(tmp+1,r); cout<<")";	 }
+	cout<<"("; output(l,tmp); cout<<" x "; output(tmp+1,r); cout<<")";	 }
 }
 int main()
 {
@@ -24,9 +22,9 @@ int main()
 		for(i=0;i<n;i++)cin>>dim[i].first>>dim[i].second;
 		for(i=0;i<n;i++)ans[i][i]={make_pair(i,0)};
 		for(i=0;i<n-1;i++)ans[i][i+1]={make_pair(i,dim[i].first*dim[i+1].first*dim[i+1].second)};
-		for(i=2;i<l;i++)
+		for(i=2;i<n;i++)
 		{
-			for(j=0;j<l-i;j++)
+			for(j=0;j<n-i;j++)
 			{
 				k=j+i;ans[j][k]=make_pair(0,INT_MAX);
 				for(l=j;l<k;l++)
