@@ -1,4 +1,4 @@
-# CP
+# UVA
 Competitive Coding
 Some UVA solutions:
 CF812-D2-C                     Binary search
